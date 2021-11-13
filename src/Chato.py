@@ -7,6 +7,7 @@ import slack
 from django.conf import settings
 
 ENABLED = True
+DEFAULT_CHANNEL='general'
 
 class _Chato:
     client = None
@@ -18,7 +19,7 @@ class _Chato:
     def enable(self):
         self.enabled = True
 
-    def chato(self, message, with_path='', channel='herrsil'):
+    def chato(self, message, with_path='', channel=DEFAULT_CHANNEL):
         if not self.enabled:
             return 0
 
@@ -33,7 +34,7 @@ def getInstance():
     return INSTANCE
 
 
-def send_message_with_client(client, message, with_path='', channel='herrsil'):
+def send_message_with_client(client, message, with_path='', channel=DEFAULT_CHANNEL):
     '''
     Sends a message to Slack
     '''
@@ -49,5 +50,5 @@ def send_message_with_client(client, message, with_path='', channel='herrsil'):
         return 0
     return -1
 
-def chato(message, with_path='', channel='herrsil'):
+def chato(message, with_path='', channel=DEFAULT_CHANNEL):
     return INSTANCE.chato(message, with_path, channel)
