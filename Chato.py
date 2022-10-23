@@ -2,7 +2,7 @@
 Chato v0.1 for easy PubSub Messaging
 by Jose Llausas
 """
-import slack
+from slack_sdk import WebClient
 
 from django.conf import settings
 
@@ -24,7 +24,7 @@ class _Chato:
             return 0
 
         if self.client is None:
-            self.client = self.client = slack.WebClient(token=settings.SLACK_TOKEN)
+            self.client = self.client = WebClient(token=settings.SLACK_TOKEN)
         return send_message_with_client(self.client, message, with_path, channel)
 
 
