@@ -5,7 +5,7 @@ import logging
 # Enable logging
 logging.basicConfig(level=logging.DEBUG)
 
-# Slack Hello World
-from slack_sdk import WebClient
-client = WebClient()
-api_response = client.api_test()
+# Run some tests:
+import Chato
+
+## TODO: Write some unit tests5weews2   

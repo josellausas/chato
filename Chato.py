@@ -52,3 +52,4 @@ def send_message_with_client(client, message, with_path='', channel=DEFAULT_CHAN
 
 def chato(message, with_path='', channel=DEFAULT_CHANNEL):
     return INSTANCE.chato(message, with_path, channel)
+
