@@ -12,7 +12,6 @@ class NotionPage:
 class NotionBlock:
     def __init__(self) -> None:
          pass
-    # block_id = '380c78c0-e0f5-4565-bdbd-c4ccb079050d'
     block_type = ''
     created_time = ''
     last_edited_time = ''
