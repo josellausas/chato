@@ -24,8 +24,8 @@ class _Chato:
         if not self.enabled:
             return 0
 
-        if self.client is None and SLACK_TOKEN:
-            self.client = self.client = WebClient(token=SLACK_TOKEN)
+        if self.client is None:
+            self.client = WebClient(token=SLACK_TOKEN)
         return send_message_with_client(self.client, message, with_path, channel)
 
 
