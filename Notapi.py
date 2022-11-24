@@ -11,8 +11,6 @@ def get_blog():
         }
     )
     return my_db
-
-
 class Domain:
     def __init__(self, name, is_live) -> None:
         self.name = name
@@ -21,7 +19,7 @@ class Domain:
     def __repr__(self) -> str:
         return self.name
 
-# TODO: Implmenet this using the NAPI Domains
+# TODO: Implement this using the NAPI Domains
 domains = {
     'llau.systems': Domain('llau.systems', True),
     'josellausas.com': Domain('llau.systems', False),
