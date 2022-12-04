@@ -1,10 +1,16 @@
 import os
 from notion_client import Client
 
-notion = Client(auth=os.environ["NOTION_TOKEN"])
-blog_database_id = os.environ["NOTION_DB"]
+notion = None
+blog_database_id = None
+
+def setup():
+    notion = Client(auth=os.environ["NOTION_TOKEN"])
+    blog_database_id = os.environ["NOTION_DB"]
 
 def get_blog():
+    if notion is None:
+        setup()
     my_db = notion.databases.query(
         **{
             "database_id": blog_database_id,
