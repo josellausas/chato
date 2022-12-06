@@ -28,13 +28,15 @@ class Domain:
 # TODO: Implement this using the NAPI Domains
 domains = {
     'llau.systems': Domain('llau.systems', True),
-    'josellausas.com': Domain('llau.systems', False),
+    'josellausas.com': Domain('llau.systems', True),
+    'zunware.com': Domain('llau.systems', False),
 }
 
 def is_domain_live(domainId) -> bool:
+    if domainId not in domains:
+        return False
     domain = domains[domainId]
     if domain:
         return domain.is_live
-    
     return False
 
