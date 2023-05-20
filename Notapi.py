@@ -32,6 +32,7 @@ domains = {
     'zunware.com': Domain('llau.systems', False),
 }
 
+# TODO: Implement something liek this
 def is_domain_live(domainId) -> bool:
     if domainId not in domains:
         return False

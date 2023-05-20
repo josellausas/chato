@@ -8,7 +8,7 @@ from slack_sdk import WebClient
 ENABLED = True
 DEFAULT_CHANNEL='general'
 SLACK_TOKEN = os.getenv("SLACK_TOKEN", "")
-SLACK_NAME = os.getenv("SLACK_TOKEN", "NAMELESS")
+SLACK_NAME = os.getenv("SLACK_NAME", "NAMELESS")
 
 class _Chato:
     client = None
