@@ -37,7 +37,9 @@ class NotionTool:
             else:
                 # Other error handling code
                 logging.error(error)
-        return Struct(my_db).results
+        return my_db
+        # print(my_db)
+        # return Struct(my_db).results
 
     def get_toggles(self):
         my_db = None
@@ -69,8 +71,6 @@ class NotionTool:
         for t in toggles:
             print(self.get_toggle_name(t))
             print(self.get_toggle_status(t))
-    
-
 
 
 class Domain:

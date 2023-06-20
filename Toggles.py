@@ -1,4 +1,4 @@
-import Notapi
+from llaulib.chato import Notapi
 
 DEV_MODE = True # TODO: Pull this from .env file
 kPROD = 'Production'
