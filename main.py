@@ -8,4 +8,3 @@ logging.basicConfig(level=logging.DEBUG)
 # Run some tests:
 import Chato
 
-## TODO: Write some unit tests5weews2   

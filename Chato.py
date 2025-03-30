@@ -6,9 +6,10 @@ import os
 from slack_sdk import WebClient
 
 ENABLED = True
-DEFAULT_CHANNEL='general'
+DEFAULT_CHANNEL = 'general'
 SLACK_TOKEN = os.getenv("SLACK_TOKEN", "")
 SLACK_NAME = os.getenv("SLACK_NAME", "NAMELESS")
+
 
 class _Chato:
     client = None
@@ -31,6 +32,7 @@ class _Chato:
 
 INSTANCE = _Chato()
 
+
 def getInstance():
     return INSTANCE
 
@@ -51,6 +53,6 @@ def send_message_with_client(client, message, with_path='', channel=DEFAULT_CHAN
         return 0
     return -1
 
+
 def chato(message, with_path='', channel=DEFAULT_CHANNEL):
     return INSTANCE.chato(message, with_path, channel)
-
