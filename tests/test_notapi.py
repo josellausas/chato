@@ -1,5 +1,5 @@
 import unittest
-import Notapi
+from llaulib.chato import Notapi
 
 
 class TestNotapi(unittest.TestCase):
