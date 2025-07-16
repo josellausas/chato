@@ -7,13 +7,14 @@ from slack_sdk import WebClient
 
 ENABLED = True
 DEFAULT_CHANNEL = 'general'
-SLACK_TOKEN = os.getenv("SLACK_TOKEN", "")
-SLACK_NAME = os.getenv("SLACK_NAME", "NAMELESS")
-
+DEFAULT_SLACK_NAME = "NAMELESS"
 
 class _Chato:
-    client = None
-    enabled = True
+    def __init__(self, token=None, slack_name=None):
+        self.client = None
+        self.enabled = True
+        self.token = token or os.getenv("SLACK_TOKEN", "")
+        self.slack_name = slack_name or os.getenv("SLACK_NAME", DEFAULT_SLACK_NAME)
 
     def disable(self):
         self.enabled = False
@@ -24,27 +25,22 @@ class _Chato:
     def chato(self, message, with_path='', channel=DEFAULT_CHANNEL):
         if not self.enabled:
             return 0
-
         if self.client is None:
-            self.client = WebClient(token=SLACK_TOKEN)
-        return send_message_with_client(self.client, message, with_path, channel)
-
+            self.client = WebClient(token=self.token)
+        return send_message_with_client(self.client, message, with_path, channel, self.slack_name)
 
 INSTANCE = _Chato()
-
 
 def getInstance():
     return INSTANCE
 
-
-def send_message_with_client(client, message, with_path='', channel=DEFAULT_CHANNEL):
+def send_message_with_client(client, message, with_path='', channel=DEFAULT_CHANNEL, slack_name=DEFAULT_SLACK_NAME):
     '''
     Sends a message to Slack
     '''
     if not ENABLED:
         return 0
-
-    name_tag = f'[ {SLACK_NAME} | {with_path} ]'
+    name_tag = f'[ {slack_name} | {with_path} ]'
     response = client.chat_postMessage(
         channel=f'#{channel}',
         text=f'{name_tag} {message}'
@@ -52,7 +48,6 @@ def send_message_with_client(client, message, with_path='', channel=DEFAULT_CHAN
     if response:
         return 0
     return -1
-
 
 def chato(message, with_path='', channel=DEFAULT_CHANNEL):
     return INSTANCE.chato(message, with_path, channel)
